@@ -137,14 +137,14 @@ def shortest_path(source, target):
                 return node
 
     class QueueFrontier(StackFrontier):
-
+        def __init__(self):
+            self.frontier = deque([])
         def remove(self):
             if self.empty():
                 raise Exception("empty frontier")
             else:
-                node = self.frontier[0]
-                self.frontier = self.frontier[1:]
-                return node
+                return self.frontier.popleft()
+
 
     if not people[source]["movies"]:
         print(people[source]["name"], "has not starred in any movies")
